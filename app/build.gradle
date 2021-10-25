@@ -2,4 +2,9 @@ dependencies {
     implementation project(":core") //App va dependre de core
     implementation project(":api") //App va dependre de api
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'org.postgresql:postgresql:42.2.8'
+
+}
+bootJar {
+    enabled = true
 }

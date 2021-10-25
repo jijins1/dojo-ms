@@ -44,14 +44,17 @@ subprojects {
         useJUnitPlatform()
     }
 
-
+    jar {
+        enabled = true
+    }
 }
 allprojects {
     bootJar {
         enabled = false
     }
 
-    jar {
-        enabled = false
-    }
+
+}
+jar {
+    enabled = false
 }
