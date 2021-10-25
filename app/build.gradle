@@ -2,7 +2,13 @@ dependencies {
     implementation project(":core") //App va dependre de core
     implementation project(":api") //App va dependre de api
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
     runtimeOnly 'org.postgresql:postgresql:42.2.8'
+
+    implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
+
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
 
 }
 bootJar {
