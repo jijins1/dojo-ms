@@ -1,0 +1,5 @@
+rootProject.name = 'dojo-ms'
+
+include("api")
+include("app")
+include("core")
