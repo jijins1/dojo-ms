@@ -22,9 +22,16 @@ public class PingouinServiceImpl implements PingouinService {
     
     @Override
     @Transactional(readOnly = true)
-    public List<Pingouin> findAllPingouinWithSameSizeHasPingouin(Long pingouinId, Long taille) {
-        Optional<Pingouin> pingouinOptional = pingouinRepository.findById(pingouinId);
+    public Pingouin findById(final Long idPingouin) {
+        Optional<Pingouin> pingouinOptional = pingouinRepository.findById(idPingouin);
         Pingouin pingouin = pingouinOptional.orElseThrow(() -> new RuntimeException("Not Found"));
+        return pingouin;
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Pingouin> findAllPingouinWithSameSizeHasPingouin(Long pingouinId) {
+        Pingouin pingouin = this.findById(pingouinId);
         return pingouinRepository.findAllByTaille(pingouin.getTaille());
     }
 }

@@ -11,9 +11,17 @@ public interface PingouinService {
     /**
      * Recherche tout les pingouins avec la meme taille que le pingouin avec l'ID pingouinId
      * @param pingouinId
-     * @param taille
      * @return
      * @throws RuntimeException si aucun pingouin avec l'id pingouinId
      */
-    List<Pingouin> findAllPingouinWithSameSizeHasPingouin(Long pingouinId, Long taille);
+    List<Pingouin> findAllPingouinWithSameSizeHasPingouin(Long pingouinId );
+    
+    /**
+     * Recherche avec l'ID pingouinId
+     * @param idPingouin
+     * @return
+     * @throws RuntimeException si aucun pingouin avec l'id pingouinId
+     */
+    Pingouin findById(Long idPingouin);
+    
 }
