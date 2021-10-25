@@ -17,7 +17,8 @@ public class PingouinServiceImpl implements PingouinService {
     PingouinRepository pingouinRepository;
     
     @Autowired
-    public PingouinServiceImpl() {
+    public PingouinServiceImpl(PingouinRepository pingouinRepository) {
+        this.pingouinRepository = pingouinRepository;
     }
     
     @Override
