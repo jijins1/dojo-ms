@@ -15,6 +15,9 @@ public class Pingouin {
     private Long id;
     @Column
     private Long taille;
+    /**
+     * Poids en kilo
+     */
     @Column
     private Long poids;
     

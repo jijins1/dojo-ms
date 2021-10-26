@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  description: Documentation about monalisa-compta microservice API
+  version: 1.0.0
+  title: Dojo penguin API
+tags:
+  - name: Penguin
+    description: Everything about Penguin
+paths:
+  /penguin/{penguin-id}:
+    get:
+      tags:
+        - penguin
+      summary: Get a penguin information
+      description: Get a penguin information
+      operationId: getPingouin
+      parameters:
+        - name: penguin-id
+          in: path
+          description: Id of the penguin
+          required: true
+          schema:
+            type: integer
+            format: int64
+          example: 10
+
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Penguin
+                description: a Penguin
+                type: object
+                required:
+                  - weight
+                  - size
+                  - race
+                properties:
+                  weight:
+                    description: Weight in pounds
+                    type: integer
+                    format: int64
+                  size:
+                    type: integer
+                    format: int64
+                  race:
+                    type: string
+
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorModel"
+    Unauthorized:
+      description: The specified resource needed authorization to be accessed
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorModel"
+    BadRequest:
+      description: The server cannot process the request due to an apparent client error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorModel"
+    InternalServerError:
+      description: The server cannot process the request due to an apparent client error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorModel"
+  schemas:
+    ErrorModel:
+      title: ErrorModel
+      description: Describes an error that can be returned
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int64
+          example: 400
+          description: HTTP code of the error
+        message:
+          type: string
+          example: The server cannot process the request
+          description: Description of the error

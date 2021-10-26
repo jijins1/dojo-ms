@@ -16,6 +16,9 @@ import com.pharmagest.monalisa.dojo.core.entity.Pingouin;
 import com.pharmagest.monalisa.dojo.core.service.PingouinService;
 import com.pharmagest.monalisa.dojo.api.PingouinModel;
 
+/**
+ * Creation d'un controller la facon classique
+ */
 @RestController
 @RequestMapping(value = "pingouin",
         produces = MediaType.APPLICATION_JSON_VALUE)
