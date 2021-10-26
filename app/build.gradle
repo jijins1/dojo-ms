@@ -9,7 +9,9 @@ dependencies {
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
 
     implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation "org.springframework.boot:spring-boot-starter-security"
 
+    testImplementation "org.springframework.security:spring-security-test"
 
     testImplementation "io.github.glytching:junit-extensions:${junitExtensionVersion}"
     testImplementation "org.jeasy:easy-random-core:${easyRandomVersion}"

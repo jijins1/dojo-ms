@@ -20,6 +20,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
@@ -49,6 +50,7 @@ class PingouinControllerIT {
     Pingouin pingouin;
     
     @Test
+    @WithUserDetails()
     void itShouldFindWithSameSize()
             throws Exception {
         Mockito.doReturn(pingouin).when(pingouinService).findById(1605L);
