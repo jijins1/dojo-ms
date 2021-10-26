@@ -10,6 +10,10 @@ dependencies {
 
     implementation "org.springframework.boot:spring-boot-starter-actuator"
 
+
+    testImplementation "io.github.glytching:junit-extensions:${junitExtensionVersion}"
+    testImplementation "org.jeasy:easy-random-core:${easyRandomVersion}"
+
 }
 bootJar {
     enabled = true

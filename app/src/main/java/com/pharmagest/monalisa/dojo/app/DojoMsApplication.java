@@ -6,9 +6,8 @@ import org.springframework.context.annotation.Import;
 
 import com.pharmagest.monalisa.dojo.core.config.CoreConfig;
 
-@Import(CoreConfig.class)
 @SpringBootApplication(
-        
+        scanBasePackageClasses = {CoreConfig.class},
         scanBasePackages = {
                 "com.pharmagest.monalisa.dojo.app.mapper",
                 "com.pharmagest.monalisa.dojo.app.controller"
