@@ -1,5 +1,6 @@
 dependencies {
 
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testImplementation "io.github.glytching:junit-extensions:${junitExtensionVersion}"
     testImplementation "org.jeasy:easy-random-core:${easyRandomVersion}"

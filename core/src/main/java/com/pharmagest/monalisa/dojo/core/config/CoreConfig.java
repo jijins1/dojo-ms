@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
         basePackages = "com.pharmagest.monalisa.dojo.core.repository"
 )
 @Slf4j
+@EnableCaching
 public class CoreConfig {
     
     /**
@@ -34,6 +36,7 @@ public class CoreConfig {
         em.setPackagesToScan("com.pharmagest.monalisa.dojo.core.entity");
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);// Nous on est pas concercé car on utilise liquibase en general. Mais il faudrait faire plus propre
+        vendorAdapter.setShowSql(true);//Pour verifier si le cache marche
         em.setJpaVendorAdapter(vendorAdapter);
         
         return em;
