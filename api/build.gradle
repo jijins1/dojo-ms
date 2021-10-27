@@ -1,0 +1,39 @@
+plugins {
+    id "org.openapi.generator" version "4.3.1"
+    id 'java-library'
+    id 'maven-publish'
+}
+
+apply plugin: 'org.openapi.generator'
+
+
+task openApiGenerateServer(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    generatorName = "spring"
+    inputSpec = "$projectDir/../openapi/v1/openapi.yaml".toString()
+    outputDir = "$buildDir/generated".toString()
+    apiPackage = "com.pharmagest.monalisa.compta.v1.server.openapi"
+    modelPackage = "com.pharmagest.monalisa.compta.v1.server.openapi.model"
+    generateApiTests = false
+    generateModelTests = false
+    configOptions = [
+            dateLibrary  : "java8",
+            interfaceOnly: "true",
+            sourceFolder : "src/main/java",
+            implFolder   : "src/main/java"
+    ]
+}
+
+
+sourceSets.main.java.srcDirs = ['build/generated/src/main/java', 'src/main/java']
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web"
+
+
+    implementation "org.openapitools:openapi-generator:${openapiGeneratorVersion}"
+    implementation "org.openapitools:openapi-generator-maven-plugin:${openapiGeneratorVersion}"
+    implementation "org.openapitools:jackson-databind-nullable:0.1.0"
+}
+
+compileJava.dependsOn tasks.openApiGenerateServer
+
